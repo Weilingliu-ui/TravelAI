@@ -1,0 +1,44 @@
+# ==================== Test Configuration ====================
+# 测试环境：H2内存库、禁用Redis、禁用AI自动配置
+
+spring:
+  autoconfigure:
+    exclude:
+      # 禁用Redis
+      - org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+      # 禁用Spring AI自动配置（使用自定义SpringAiConfig）
+      - org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration
+
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MYSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  ai:
+    openai:
+      api-key: test-key-for-ci
+      base-url: https://api.deepseek.com
+      chat:
+        enabled: true
+        options:
+          model: deepseek-chat
+          temperature: 0.7
+          max-tokens: 4096
+
+jwt:
+  secret: test-jwt-secret-key-for-unit-testing-must-be-at-least-256-bits-long!!
+  expiration: 3600000
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+
+# MinIO (test)
+minio:
+  endpoint: http://localhost:9000
+  access-key: test
+  secret-key: test
+  bucket: test

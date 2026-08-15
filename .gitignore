@@ -1,0 +1,48 @@
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Java / Spring Boot
+# =========================
+backend/target/
+*.class
+*.log
+
+# =========================
+# Node / Vue
+# =========================
+frontend/node_modules/
+frontend/dist/
+
+# =========================
+# IDE
+# =========================
+.idea/
+*.iml
+.vscode/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Spring Boot private profiles
+# =========================
+backend/src/main/resources/application-local.yml
+backend/src/main/resources/application-dev.yml
+backend/src/main/resources/application-prod.yml
+
+# Test-only private profiles
+backend/src/test/resources/application-local.yml
